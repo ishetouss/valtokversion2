@@ -171,9 +171,9 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-11">
                         <div class="box-shadow to-up">
-                            <form action="https://formsubmit.co/client@valtok.rw" method="post">
+                            <form action="https://formsubmit.co/info@valtok.rw" method="post">
 
-                                
+                                <div class="messages"></div>
 
                                 <div class="controls row">
 
@@ -185,31 +185,33 @@
 
                                     <div class="col-lg-6 md-mb30">
                                         <div class="form-group mb-30">
-                                            <input id="name" name="name" placeholder="Name" required="required">
+                                            <input id="name"placeholder="Name" required="required">
                                         </div>
 
                        
                                         <div class="form-group mb-30">
-                                            <input id="email" name="email" placeholder="Email" required="required">
+                                            <input id="email" placeholder="Email" required="required">
                                         </div>
 
                                         <div class="form-group">
-                                            <input   id="subject" name="subject" placeholder="Subject" required="required">
+                                            <input   id="subject"  placeholder="Subject" required="required">
                                         </div>
 
                                       
                                     </div>
 
+                                    <input type="hidden" name="_subject" value="New client">
+                                    <input type="hidden" name="_next" value="https://www.valtok.com/">
                                     <div class="col-lg-6">
                                         <div class="form-group sam-height">
-                                            <textarea  id="message" name="message" placeholder="Message" rows="4" required="required"></textarea>
+                                            <textarea  id="message" placeholder="Message" rows="4" required="required"></textarea>
                                         </div>
                                     </div>
 
                              
                                     <div class="col-12">
                                         <div class="text-center mt-40">
-                                            <button type="submit">
+                                            <button type="submit" >
                                                 <span>Let's Talk</span>
                                             </button>
                                         </div>
