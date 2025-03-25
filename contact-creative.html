@@ -173,7 +173,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-11">
                         <div class="box-shadow to-up">
-                            <form method="post" action="https://formsubmit.co/valtokafrica@gmail.com" >
+                            <form  id="my-form" action="https://formspree.io/f/mblgynod" method="POST">
 
                                 <div class="messages"></div>
 
@@ -200,9 +200,6 @@
                     
                                     </div>
 
-                                    <input type="hidden" name="_subject" value="New client">
-                                    <input type="hidden" name="_next" value="https://www.valtok.rw/successful.html">
-                                    <input type="hidden" name="_cc" value="ishetou.123@gmail.com">
                                     <div class="col-lg-6">
                                         <div class="form-group sam-height">
                                             <textarea  name="message" placeholder="Message" rows="4" required="required"></textarea>
@@ -212,13 +209,47 @@
                              
                                     <div class="col-12">
                                         <div class="text-center mt-40">
-                                            <button type="submit" >
+                                            <button type="submit" id="my-form-button">
                                                 <span>Let's Talk</span>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
+                                <p id="my-form-status"></p>
                             </form>
+
+                            <script>
+                                var form = document.getElementById("my-form");
+                                
+                                async function handleSubmit(event) {
+                                  event.preventDefault();
+                                  var status = document.getElementById("my-form-status");
+                                  var data = new FormData(event.target);
+                                  fetch(event.target.action, {
+                                    method: form.method,
+                                    body: data,
+                                    headers: {
+                                        'Accept': 'application/json'
+                                    }
+                                  }).then(response => {
+                                    if (response.ok) {
+                                      status.innerHTML = "Thanks for your submission!";
+                                      form.reset()
+                                    } else {
+                                      response.json().then(data => {
+                                        if (Object.hasOwn(data, 'errors')) {
+                                          status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                                        } else {
+                                          status.innerHTML = "Oops! There was a problem submitting your form"
+                                        }
+                                      })
+                                    }
+                                  }).catch(error => {
+                                    status.innerHTML = "Oops! There was a problem submitting your form"
+                                  });
+                                }
+                                form.addEventListener("submit", handleSubmit)
+                              </script>
                         </div>
                     </div>
                 </div>
